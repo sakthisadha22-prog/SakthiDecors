@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakthi Decors | Handcrafted Home Decor & Festive Gifts</title>
+<style>
+  :root {
+    --maroon: #6B1E2E;
+    --maroon-deep: #4A1420;
+    --gold: #C9A227;
+    --gold-soft: #E8D18A;
+    --cream: #FFF8EE;
+    --ink: #2A1A1D;
+    --muted: #6E5A5E;
+    --white: #FFFFFF;
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(74, 20, 32, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: "Georgia", "Times New Roman", serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1167px; margin: 0 auto; padding: 0 48px; }
+  .eyebrow { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  h1 { font-size: clamp(34px, 4.5vw, 52px); line-height: 1.15; color: var(--maroon-deep); font-weight: 700; }
+  h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.2; color: var(--maroon-deep); font-weight: 700; }
+  h3 { font-size: 22px; color: var(--maroon-deep); font-weight: 700; }
+  h4 { font-size: 17px; color: var(--maroon-deep); font-weight: 700; }
+  p { color: var(--muted); font-size: 16px; }
+  .section { padding: 64px 0; }
+  .section-head { margin-bottom: 40px; }
+  .section-head p { margin-top: 12px; max-width: 640px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 999px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--maroon); color: var(--white); }
+  .btn-primary:hover { background: var(--maroon-deep); }
+  .btn-outline { border-color: var(--maroon); color: var(--maroon); background: transparent; }
+  .btn-gold { background: var(--gold); color: var(--maroon-deep); }
+  .btn-light { background: var(--white); color: var(--maroon); }
+  .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .link { font-family: "Helvetica Neue", Arial, sans-serif; color: var(--maroon); font-weight: 600; font-size: 15px; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+  .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .img-placeholder { background: linear-gradient(135deg, #8A2B3E 0%, #4A1420 60%, #2A0D14 100%); position: relative; }
+  .img-placeholder::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(201,162,39,.25), transparent 60%); }
+
+  /* Top marquee */
+  .marquee { background: var(--maroon-deep); color: var(--gold-soft); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; }
+  .marquee .container { display: flex; justify-content: space-between; align-items: center; height: 34px; }
+
+  /* Category strip */
+  .strip { background: var(--white); border-bottom: 1px solid #EFE4D2; }
+  .strip-inner { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 14px; }
+  .strip-inner a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; white-space: nowrap; color: var(--ink); }
+  .strip-inner a:hover { background: var(--cream); color: var(--maroon); }
+  .strip-icon { color: var(--gold); }
+
+  /* Hero */
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; background: #F6EBD2; color: var(--maroon); padding: 6px 14px; border-radius: 999px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  .hero-text p { margin: 20px 0 28px; font-size: 17px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .trust { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 32px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 13px; color: var(--muted); }
+  .trust span::before { content: "✓ "; color: var(--gold); font-weight: 700; }
+  .hero-visual { position: relative; height: 458px; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+  .hero-visual .overlay { position: absolute; left: 24px; right: 24px; bottom: 24px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); border-radius: 14px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .overlay small { font-family: "Helvetica Neue", Arial, sans-serif; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; font-size: 11px; font-weight: 700; }
+  .circle-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--maroon); color: var(--white); display: grid; place-items: center; font-size: 16px; }
+
+  /* Story */
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .story-visual { position: relative; height: 572px; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+  .story-badge { position: absolute; left: 16px; top: 16px; background: var(--white); color: var(--maroon); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+  .stat-card { position: absolute; right: 16px; bottom: 16px; width: 289px; background: var(--white); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); }
+  .stat-card strong { font-size: 22px; color: var(--maroon-deep); display: block; }
+  .stat-card span { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 13px; color: var(--muted); }
+  .divider { display: flex; align-items: center; gap: 12px; }
+  .divider::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+  .story-text p { margin-top: 16px; }
+  .mini-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+  .mini { background: var(--white); border: 1px solid #EFE4D2; border-radius: 12px; padding: 16px; }
+  .mini b { display: block; color: var(--maroon-deep); font-size: 15px; }
+  .mini span { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; color: var(--muted); }
+
+  /* Featured collections */
+  .collections { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .collection { display: flex; flex-direction: column; }
+  .collection .img-placeholder { height: 284px; }
+  .collection .body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+  .collection .body p { font-size: 14px; margin: 8px 0 16px; }
+  .collection .tag { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+  .collection .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid #F1E6D4; }
+
+  /* Best sellers */
+  .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .product .wrap { position: relative; height: 100%; display: flex; flex-direction: column; }
+  .product .img-placeholder { height: 246px; }
+  .product .badge { position: absolute; left: 12px; top: 12px; z-index: 2; background: var(--white); color: var(--maroon); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+  .product .body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .product .brand { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; letter-spacing: 1.5px; color: var(--gold); font-weight: 700; }
+  .product h3 { font-size: 18px; margin: 6px 0; }
+  .product p { font-size: 14px; }
+  .product .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 13px; }
+  .product .price-row a { color: var(--maroon); font-weight: 600; }
+  .center-action { text-align: center; margin-top: 40px; }
+
+  /* Festive banner */
+  .banner { background: linear-gradient(120deg, #6B1E2E 0%, #4A1420 100%); color: var(--cream); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
+  .banner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 30%, rgba(201,162,39,.2), transparent 45%), radial-gradient(circle at 80% 70%, rgba(201,162,39,.15), transparent 40%); }
+  .banner .container { position: relative; }
+  .banner .eyebrow { color: var(--gold-soft); }
+  .banner h2 { color: var(--cream); margin: 16px auto; max-width: 720px; }
+  .banner p { color: #E9D9D3; max-width: 640px; margin: 0 auto 32px; font-size: 17px; }
+  .banner .hero-ctas { justify-content: center; }
+
+  /* Navaratri feature */
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .feature-visual { position: relative; height: 429px; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+  .feature-visual .overlay { position: absolute; left: 24px; right: 24px; bottom: 24px; background: rgba(255,255,255,.92); border-radius: 14px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tags span { background: var(--white); border: 1px solid #E9DCC4; color: var(--maroon); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+  .checks { list-style: none; margin: 28px 0; display: grid; gap: 18px; }
+  .checks li { display: flex; gap: 14px; }
+  .checks .tick { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: #F6EBD2; color: var(--maroon); display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+  .checks h4 { margin-bottom: 2px; }
+  .checks p { font-size: 15px; }
+
+  /* Why choose */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .why { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px 24px; }
+  .why .icon { width: 48px; height: 48px; border-radius: 12px; background: #F6EBD2; color: var(--maroon); display: grid; place-items: center; font-size: 22px; margin-bottom: 18px; }
+  .why p { font-size: 14px; margin-top: 10px; }
+
+  /* Customized orders */
+  .custom { background: var(--maroon-deep); color: var(--cream); padding: 80px 0; }
+  .custom .section-head { text-align: center; }
+  .custom .section-head p { margin: 12px auto 0; color: #E2CFC7; }
+  .custom h2 { color: var(--cream); }
+  .custom .eyebrow { color: var(--gold-soft); }
+  .custom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .custom-card { background: rgba(255,255,255,.04); border: 1px solid rgba(232,209,138,.2); border-radius: var(--radius); padding: 32px; }
+  .custom-card .icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(201,162,39,.15); display: grid; place-items: center; color: var(--gold-soft); font-size: 20px; margin-bottom: 20px; }
+  .custom-card h3 { color: var(--cream); margin-bottom: 12px; }
+  .custom-card p { color: #E2CFC7; font-size: 15px; }
+  .custom-card .tagline { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(232,209,138,.2); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; letter-spacing: 1.5px; color: var(--gold-soft); font-weight: 700; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; }
+  .gallery .img-placeholder { border-radius: var(--radius); box-shadow: var(--shadow); }
+  .g1 { height: 284px; } .g2 { height: 340px; margin-top: 40px; } .g3 { height: 260px; } .g4 { height: 300px; margin-top: 24px; }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .review { padding: 32px; }
+  .stars { color: var(--gold); letter-spacing: 3px; font-size: 14px; margin-bottom: 16px; }
+  .review blockquote { font-size: 16px; color: var(--ink); font-style: italic; min-height: 120px; }
+  .reviewer { display: flex; gap: 14px; align-items: center; margin-top: 24px; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #F6EBD2; color: var(--maroon); display: grid; place-items: center; font-weight: 700; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .reviewer b { color: var(--maroon-deep); font-size: 15px; display: block; }
+  .reviewer span { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 12px; color: var(--muted); }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .contact-info p { margin: 16px 0 24px; }
+  .info-list { display: grid; gap: 16px; margin-bottom: 32px; }
+  .info-item { display: flex; gap: 16px; align-items: flex-start; background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid #EFE4D2; }
+  .info-item .icon { color: var(--gold); font-size: 18px; }
+  .info-item b { display: block; color: var(--maroon-deep); font-size: 15px; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .info-item span { font-size: 14px; color: var(--muted); font-family: "Helvetica Neue", Arial, sans-serif; }
+  .pay-box { background: var(--white); border: 1px dashed var(--gold); border-radius: 12px; padding: 20px; }
+  .pay-box h4 { margin-bottom: 6px; }
+  .pay-box p { font-size: 14px; margin-bottom: 14px; }
+  .form-card { padding: 40px; }
+  .form-card .sub { font-size: 14px; margin: 8px 0 28px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-weight: 600; color: var(--maroon-deep); margin-bottom: 8px; }
+  .field input { width: 100%; padding: 14px 16px; border: 1px solid #E5D7C2; border-radius: 10px; background: var(--cream); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: border-color .2s; }
+  .field input:focus { border-color: var(--maroon); background: var(--white); }
+  .field input.invalid { border-color: #B3261E; }
+  .submit-btn { width: 100%; justify-content: center; margin-top: 8px; }
+  .status { margin-top: 18px; padding: 14px 16px; border-radius: 10px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 14px; display: none; }
+  .status.ok { display: block; background: #E8F5E9; color: #1B5E20; }
+  .status.err { display: block; background: #FDECEA; color: #8A1C15; }
+
+  @media (max-width: 1024px) {
+    .container { padding: 0 24px; }
+    .hero-grid, .story-grid, .feature-grid, .contact-grid { grid-template-columns: 1fr; }
+    .collections, .reviews, .custom-grid { grid-template-columns: repeat(2, 1fr); }
+    .products, .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .collections, .reviews, .custom-grid, .products, .why-grid, .gallery { grid-template-columns: 1fr; }
+    .marquee span:last-child { display: none; }
+    .mini-cards { grid-template-columns: 1fr; }
+    .form-card { padding: 24px; }
+    .g1, .g2, .g3, .g4 { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top marquee / ritual notice -->
+<div class="marquee">
+  <div class="container">
+    <span>✦ Navaratri & Golu collections now open for enquiries</span>
+    <span>Shipping Pan-India & Worldwide</span>
+  </div>
+</div>
+
+<!-- Category strip -->
+<nav class="strip">
+  <div class="container strip-inner">
+    <a href="#collections"><span class="strip-icon">⌂</span> Home Decor</a>
+    <a href="#collections"><span class="strip-icon">✺</span> Festive Decor</a>
+    <a href="#collections"><span class="strip-icon">❀</span> Pooja Decor</a>
+    <a href="#collections"><span class="strip-icon">✉</span> Return Gifts</a>
+    <a href="#collections"><span class="strip-icon">◈</span> Customized Gifts</a>
+    <a href="#products"><span class="strip-icon">★</span> Best Sellers</a>
+    <a href="#custom"><span class="strip-icon">✎</span> Custom Orders</a>
+    <a href="#gallery"><span class="strip-icon">▣</span> Gallery</a>
+  </div>
+</nav>
+
+<!-- Section 1: Hero -->
+<section class="section" style="padding-top: 64px;">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="pill">✦ Handcrafted in Tamil Nadu</span>
+      <h1>Beautiful Decor. Thoughtfully Crafted.</h1>
+      <p>Discover elegant home decor, festive collections, return gifts, and handcrafted creations from Sakthi Decors. Rooted in the sacred warmth of Tamil Nadu rituals.</p>
+      <div class="hero-ctas">
+        <a href="#collections" class="btn btn-primary">Explore Collections →</a>
+        <a href="#contact" class="btn btn-outline">Send an Enquiry</a>
+      </div>
+      <div class="trust">
+        <span>Handcrafted by artisans</span>
+        <span>Custom sizes &amp; colours</span>
+        <span>Bulk gifting</span>
+        <span>Pan-India delivery</span>
+      </div>
+    </div>
+    <div class="hero-visual img-placeholder">
+      <div class="overlay">
+        <div>
+          <small>Featured this season</small>
+          <h4>Navaratri Golu Collection</h4>
+        </div>
+        <div class="circle-btn">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Introduction / brand story -->
+<section class="section">
+  <div class="container story-grid">
+    <div class="story-visual img-placeholder">
+      <span class="story-badge">Heritage Craft</span>
+      <div class="stat-card">
+        <strong>Custom Sizes</strong>
+        <span>Tailored to your space</span>
+      </div>
+    </div>
+    <div class="story-text">
+      <div class="divider"><span class="eyebrow">Our Story</span></div>
+      <h2 style="margin-top: 16px;">Decor that adds beauty to every celebration.</h2>
+      <p>Sakthi Decors brings together beautiful decorative pieces, festive collections, and thoughtful gifting ideas designed to make homes and auspicious celebrations more special.</p>
+      <p>Founded with deep reverence for South Indian traditions—from the resonant glow of morning pooja vilakkus to the joyous gathering of Navaratri Kolu—our atelier blends age-old iconography with fine laser-cut craftsmanship, creating pieces that families treasure for generations.</p>
+      <div class="mini-cards">
+        <div class="mini"><b>100% Handcrafted</b><span>Intricately detailed</span></div>
+        <div class="mini"><b>Custom Sizes</b><span>Tailored to your space</span></div>
+        <div class="mini"><b>Bulk Gifting</b><span>Events &amp; Weddings</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Featured collections -->
+<section class="section" id="collections">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Featured Collections</span>
+      <h2 style="margin-top: 10px;">Shop by occasion and room</h2>
+    </div>
+    <div class="collections">
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 01</span>
+          <h3 style="margin-top: 6px;">Home Decor</h3>
+          <p>Traditional wall hangings, brass accents, urlis, and ritual focal points.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 02</span>
+          <h3 style="margin-top: 6px;">Festive Decor</h3>
+          <p>Diwali and Pongal decorative stands, floral toran frames, and entry focal sets.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 03</span>
+          <h3 style="margin-top: 6px;">Navaratri Return Gifts</h3>
+          <p>Handcrafted keepsakes, sacred thamboolam pouches, and heirloom gifts.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 04</span>
+          <h3 style="margin-top: 6px;">Pooja Decor</h3>
+          <p>Mandir backdrop panels, Lakshmi face plaques, and artisanal diya stands.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 05</span>
+          <h3 style="margin-top: 6px;">MDF Decor</h3>
+          <p>Laser-cut imperial elephants, dancing peacocks, and ornamental jali designs.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+      <div class="card collection">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <span class="tag">Collection 06</span>
+          <h3 style="margin-top: 6px;">Customized Gifts</h3>
+          <p>Tailored wedding favors, housewarming sets, and personalized corporate boxes.</p>
+          <div class="foot"><a href="#contact" class="link">Explore</a><span>→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Best sellers -->
+<section class="section" id="products" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Best Sellers</span>
+      <h2 style="margin-top: 10px;">Our most-loved product picks</h2>
+    </div>
+    <div class="products">
+      <div class="product">
+        <div class="wrap card">
+          <div class="img-placeholder"></div>
+          <span class="badge">Bestseller</span>
+          <div class="body">
+            <div class="brand">MDF ARTISTRY</div>
+            <h3>Elephant MDF Stand Decor</h3>
+            <p>Painted in royal maroon &amp; gold filigree, perfect for Golu &amp; entryway displays.</p>
+            <div class="price-row"><a href="#contact">Enquire →</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="wrap card">
+          <div class="img-placeholder"></div>
+          <span class="badge">New</span>
+          <div class="body">
+            <div class="brand">POOJA SANCTUM</div>
+            <h3>Metal Lakshmi Face Decor</h3>
+            <p>Auspicious brass finish wall hanging with traditional floral garland mount.</p>
+            <div class="price-row"><a href="#contact">Enquire →</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="wrap card">
+          <div class="img-placeholder"></div>
+          <span class="badge">Gifting</span>
+          <div class="body">
+            <div class="brand">GOLU FAVORS</div>
+            <h3>Navaratri Thamboolam Basket</h3>
+            <p>Handwoven festive basket with sacred kumkum chimizh, beetle leaf &amp; nuts.</p>
+            <div class="price-row"><a href="#contact">Enquire →</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="wrap card">
+          <div class="img-placeholder"></div>
+          <span class="badge">Classic</span>
+          <div class="body">
+            <div class="brand">DEEPA JYOTHI</div>
+            <h3>Decorative MDF Diya Stand</h3>
+            <p>Tiered peacock motif candle and diya stand for luminous evening pooja setups.</p>
+            <div class="price-row"><a href="#contact">Enquire →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center-action">
+      <a href="#contact" class="btn btn-outline">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Festive collection banner -->
+<section class="banner">
+  <div class="container">
+    <span class="eyebrow">✦ Festive Season Special</span>
+    <h2>Celebrate every festival with heritage decor.</h2>
+    <p>Pre-order your Navaratri, Diwali, and Pongal sets today and get personal assistance on colours, sizes, and quantities.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-gold">Pre-order Festive Sets</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Navaratri / Thamboolam feature -->
+<section class="section">
+  <div class="container feature-grid">
+    <div>
+      <div class="tags">
+        <span>Navaratri</span>
+        <span>Thamboolam</span>
+        <span>Return Gifts</span>
+      </div>
+      <h2>Beautiful Thamboolam for Every Guest.</h2>
+      <p style="margin-top: 16px;">Make your Navaratri celebrations extra special with thoughtfully arranged thamboolam baskets and elegant return-gift ideas crafted in Tamil Nadu.</p>
+      <ul class="checks">
+        <li><span class="tick">✓</span><div><h4>Authentic arrangements</h4><p>Traditional items arranged with care for every guest.</p></div></li>
+        <li><span class="tick">✓</span><div><h4>Custom quantities</h4><p>From small family gatherings to large community events.</p></div></li>
+        <li><span class="tick">✓</span><div><h4>Sacred finishing touches</h4><p>Kumkum, betel leaf, and nuts packed with reverence.</p></div></li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Order Thamboolam Sets</a>
+        <a href="#collections" class="link" style="align-self:center;">See return gift ideas →</a>
+      </div>
+    </div>
+    <div class="feature-visual img-placeholder">
+      <div class="overlay">
+        <div>
+          <small>Navaratri Special</small>
+          <h4>Thamboolam &amp; Return Gifts</h4>
+        </div>
+        <div class="circle-btn">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9: Why choose -->
+<section class="section" style="background: #F9F2E4;">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="eyebrow">Why Choose Sakthi Decors</span>
+      <h2 style="margin-top: 10px;">Crafted with heritage. Delivered with care.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why"><div class="icon">❖</div><h3>Beautiful Designs</h3><p>Elegant products created to seamlessly complement your rituals and living spaces with authentic Tamil heritage motifs.</p></div>
+      <div class="why"><div class="icon">✿</div><h3>Thoughtful Gifting</h3><p>Products selected with auspicious gifting traditions in mind, ensuring your guests receive treasured, lasting blessings.</p></div>
+      <div class="why"><div class="icon">✎</div><h3>Customization</h3><p>Flexible options for special color codes, event sizes, personalized engravings, and bespoke ritual dimensions.</p></div>
+      <div class="why"><div class="icon">☏</div><h3>Personal Support</h3><p>Easy enquiry and dedicated 1-on-1 assistance through WhatsApp with rapid response times and live order updates.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8: Customized orders -->
+<section class="custom" id="custom">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Customized Orders</span>
+      <h2 style="margin-top: 10px;">Made to order, for your occasion.</h2>
+    </div>
+    <div class="custom-grid">
+      <div class="custom-card">
+        <div class="icon">✎</div>
+        <h3>Customized Gifts</h3>
+        <p>Personalized creations tailored for milestone occasions. Engrave family monograms, custom dates, and traditional kolam shapes.</p>
+        <div class="tagline">IDEAL FOR WEDDINGS &amp; ANNIVERSARIES</div>
+      </div>
+      <div class="custom-card">
+        <div class="icon">❖</div>
+        <h3>Bulk Event Orders</h3>
+        <p>Specialized large volume requirements for temple events, community festivals, corporate celebrations, and grand wedding seers.</p>
+        <div class="tagline">50 TO 5000+ UNITS SUPPORTED</div>
+      </div>
+      <div class="custom-card">
+        <div class="icon">✿</div>
+        <h3>Return Gifts</h3>
+        <p>Curated return gift boxes thoughtfully assembled for Grihapravesham (Housewarming), Seemantham (Baby Shower), and Upanayanam.</p>
+        <div class="tagline">HANDMADE IN TAMIL NADU</div>
+      </div>
+    </div>
+    <div class="center-action">
+      <a href="#contact" class="btn btn-gold">Start a Custom Order →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10: Gallery -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Curated Photo Gallery</span>
+      <h2 style="margin-top: 10px;">A glimpse of our craft.</h2>
+    </div>
+    <div class="gallery">
+      <div class="img-placeholder g1"></div>
+      <div class="img-placeholder g2"></div>
+      <div class="img-placeholder g3"></div>
+      <div class="img-placeholder g4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 11: Customer reviews -->
+<section class="section" style="background: #F9F2E4;">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="eyebrow">Customer Reviews</span>
+      <h2 style="margin-top: 10px;">Loved by families across India.</h2>
+    </div>
+    <div class="reviews">
+      <div class="card review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The Navaratri thamboolam baskets were the absolute highlight of our Golu! Every guest appreciated the craftsmanship and thoughtful arrangement. Exceptional packaging."</blockquote>
+        <div class="reviewer"><div class="avatar">L</div><div><b>Lakshmi R.</b><span>Chennai</span></div></div>
+      </div>
+      <div class="card review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Ordered customized MDF elephant stands for our housewarming function. Exceptional quality and swift WhatsApp communication. They customized the maroon tone to match our curtains!"</blockquote>
+        <div class="reviewer"><div class="avatar">K</div><div><b>Karthik S.</b><span>Coimbatore</span></div></div>
+      </div>
+      <div class="card review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Authentic traditional aesthetic without looking dated. Perfect blend of heritage elegance and sturdy craft. Shipped safely to our home in Madurai without a single scratch."</blockquote>
+        <div class="reviewer"><div class="avatar">M</div><div><b>Meenakshi V.</b><span>Madurai</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 12: Contact & enquiry form -->
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Connect With Our Atelier</span>
+      <h2 style="margin-top: 10px;">Let's Create Something Beautiful Together.</h2>
+      <p>Based in Tamil Nadu, India • Shipping Pan-India &amp; Worldwide. Have an upcoming festival, wedding, or customized decor requirement? Send us a quick note.</p>
+      <div class="info-list">
+        <div class="info-item"><span class="icon">⌖</span><div><b>Based in Tamil Nadu</b><span>Artisan atelier, India</span></div></div>
+        <div class="info-item"><span class="icon">✈</span><div><b>Pan-India &amp; Worldwide</b><span>Shipping available</span></div></div>
+        <div class="info-item"><span class="icon">☏</span><div><b>WhatsApp Support</b><span>Rapid replies for enquiries and order updates</span></div></div>
+      </div>
+      <div class="pay-box">
+        <h4>Make a Payment</h4>
+        <p>Already have an invoice or quote? Pay securely online.</p>
+        <a href="https://rzp.io/rzp/2rd2Jg9" target="_blank" rel="noopener" class="btn btn-primary">Pay Now →</a>
+      </div>
+    </div>
+
+    <div class="card form-card">
+      <h3>Send an Enquiry</h3>
+      <p class="sub">Fill out this quick form to initiate an instant chat or quote request.</p>
+
+      <form id="enquiryForm" novalidate>
+        <div class="field">
+          <label for="name">Your Full Name *</label>
+          <input type="text" id="name" placeholder="e.g. Ananya Raman" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="e.g. ananya@example.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel">
+        </div>
+        <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">Send Enquiry →</button>
+      </form>
+
+      <div id="status" class="status" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Apps Script Web App URL (deployed as: Execute as Me, Access: Anyone)
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzRPFsYmFl4fWL2A9CuPO0o00FjBp2OSGIuxSnVLEOKlTEPyY8EzfHorjWkNUeHZ1M-Jw/exec";
+
+  const form = document.getElementById("enquiryForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const statusEl = document.getElementById("status");
+
+  function showSuccess() {
+    statusEl.className = "status ok";
+    statusEl.textContent = "Thank you! Your enquiry has been received. We will reach out on WhatsApp shortly.";
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Enquiry →";
+  }
+
+  function showError() {
+    statusEl.className = "status err";
+    statusEl.textContent = "Sorry, something went wrong. Please try again in a moment.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Enquiry →";
+  }
+
+  function validate() {
+    const fields = ["name", "email", "phone"];
+    let ok = true;
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      const valid = el.value.trim() !== "" && (id !== "email" || el.checkValidity());
+      el.classList.toggle("invalid", !valid);
+      if (!valid) ok = false;
+    });
+    return ok;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    statusEl.className = "status";
+    statusEl.textContent = "";
+
+    if (!validate()) {
+      statusEl.className = "status err";
+      statusEl.textContent = "Please fill in your name, a valid email, and phone number.";
+      return;
+    }
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+
+</body>
+</html>
